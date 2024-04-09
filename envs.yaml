@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: stng-secrets
 stringData:
-  APP_NAME: "App Name"
+  APP_NAME: "stickersng-api"
   APP_ENV: "local"
   APP_KEY: "base64:rvpuu7UF/tQqbfDRy6xIPDNwM/I5O00JQ+dohwZi8So="
   APP_DEBUG: "true"

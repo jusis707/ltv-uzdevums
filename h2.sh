@@ -14,7 +14,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
 sudo groupadd docker && sudo usermod -a -G docker
-exec newgrp docker
 mkdir ~/ltv
 cd ~/ltv
 sudo apt-get update

@@ -86,6 +86,12 @@ eval $(minikube -p minikube docker-env)
 composer update
 composer create-project laravel/laravel example-app
 cd ~/ltv/example-app
+rm -rf ~/ltv/example-app/Dockerfile
+rm -rf cd ~/ltv/example-app/.env
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
+docker build -t jusis707/lav:11 .
+docker push jusis707/lav:11
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
@@ -97,11 +103,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 kubectl apply -f envs.yaml
 kubectl apply -f api-deployment.yaml
 kubectl apply -f mysql-deployment.yaml
-rm -rf ~/ltv/example-app/Dockerfile
 cd ~/ltv/example-app
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
-docker build -t jusis707/lav:11 .
-docker push jusis707/lav:11
 clear
 minikube ip >ip-kube &
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"

@@ -92,7 +92,6 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 rm -rf ~/ltv/example-app/Dockerfile
 cd ~/ltv/example-app
@@ -121,6 +120,8 @@ while kill -0 $pid 2>/dev/null; do  # Check if the process is running
 done
 echo
 echo -e "\n"
+cd ~/ltv/example-app/deployments
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 kubectl apply -f in.yaml
 clear
 ##kubectl wait pod --all --for=condition=Ready --timeout=15m

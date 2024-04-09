@@ -62,7 +62,7 @@ echo "uzgaidīt..."
 minikube addons enable ingress
 echo ""
 clear
-echo "uzgaidīt..."
+#echo "uzgaidīt..."
 minikube addons enable registry
 echo ""
 clear
@@ -82,7 +82,6 @@ echo "startējam yaml manifestus..."
 echo "----------------------------------------"
 echo ""
 cd ~/ltv
-eval $(minikube -p minikube docker-env)
 composer update
 composer create-project laravel/laravel example-app
 cd ~/ltv/example-app
@@ -90,6 +89,7 @@ rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
+eval $(minikube -p minikube docker-env)
 docker build -t jusis707/lav:11 .
 docker push jusis707/lav:11
 mkdir ~/ltv/example-app/deployments

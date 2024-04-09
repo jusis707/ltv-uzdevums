@@ -94,6 +94,9 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
+cd ~ltv/example-app
+rm -rf Dockerfile
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -q
 docker build -t jusis707/lav:latest .
 docker push jusis707/lav:latest
 kubectl apply -k ./deployments

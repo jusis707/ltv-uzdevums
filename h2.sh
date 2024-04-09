@@ -3,7 +3,7 @@ read -p "
 ===========================================================================================
                                        UZMANĪBU
                                      bija jāveic:
-            sudo sgroupadd docker && usermod -aG docker $USER && newgrp docker
+           sudo groupadd docker && sudo usermod -a -G docker $USER && newgrp docker
 ===========================================================================================
                                   y lai turpinātu
                                 CTRL + C lai izietu
@@ -81,8 +81,8 @@ sleep 3
 echo "startējam yaml manifestus..."
 echo "----------------------------------------"
 echo ""
+cd ~/ltv
 eval $(minikube -p minikube docker-env)
-
 composer create-project laravel/laravel example-app
 cd example-app
 mkdir deployments
@@ -97,8 +97,8 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 cd ~ltv/example-app
 rm -rf Dockerfile
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -q
-docker build -t jusis707/lav:latest .
-docker push jusis707/lav:latest
+docker build -t jusis707/lav:1 .
+docker push jusis707/lav:1
 kubectl apply -k ./deployments
 minikube service stickersng-api --url
 clear

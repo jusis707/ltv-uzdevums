@@ -13,7 +13,6 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
-sudo groupadd docker && sudo usermod -a -G docker
 mkdir ~/ltv
 cd ~/ltv
 sudo apt-get update
@@ -36,23 +35,12 @@ echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docke
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin composer php-curl php-xml php8.2-mbstring php-mbstring -y
-#sudo echo "{ "insecure-registries" : [ "10.0.0.0/16" ] }" > /etc/docker/daemon.json
-#sed 's/\[Service\]/\[Service\] \nEnvironment=DOCKER_OPTS=--insecure-registry=10.0.0.0/16/' /lib/systemd/system/docker.service > /lib/systemd/system/docker.service.tmp
-#mv /lib/systemd/system/docker.service.tmp /lib/systemd/system/docker.service
 echo 'aG9yaXpvbnRzCg==' | base64 --decode > ~/ltv/p.txt
 cat ~/ltv/p.txt | docker login --username jusis707 --password-stdin docker.io
 clear
 minikube config set cpus 4
-minikube config set memory 4084
+minikube config set memory 4096
 sudo usermod -aG docker $USER
-#&& newgrp docker
-newgrp docker << FOO
-FOO
-#sudo usermod -aG docker $USER
-#sudo newgrp docker
-#sudo usermod -aG docker $USER && newgrp docker
-# nedroši, lai nestartētu minikube ar --force
-#sudo chmod 666 /var/run/docker.sock
 minikube start --insecure-registry "10.0.0.0/24" --driver=docker
 echo ""
 clear

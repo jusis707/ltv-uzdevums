@@ -40,7 +40,6 @@ cat ~/ltv/p.txt | docker login --username jusis707 --password-stdin docker.io
 clear
 minikube config set cpus 4
 minikube config set memory 4096
-sudo usermod -aG docker $USER
 minikube start --insecure-registry "10.0.0.0/24" --driver=docker
 echo ""
 clear
@@ -94,11 +93,13 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 kubectl apply -k ~/ltv/example-app/deployments/
 echo ""
 echo "---------------------------------------"
-cd ~/ltv/example-app
+cd ~/ltv/
 clear
-minikube ip >ip-kube &
+minikube ip > ~/ltv/ip-kube &
 echo "----------------------------------------"
-echo "būs jāievada parole:"
+echo "pievienojam minikube ip adresi laravelltv.lv
+echo "----------------------------------------"
+pēc pieprasījuma, būs jāievada parole (sudo, ar noilgumu):"
 echo "----------------------------------------"
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2

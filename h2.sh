@@ -51,10 +51,6 @@ echo "uzgaidīt..."
 minikube addons enable ingress
 echo ""
 clear
-#echo "uzgaidīt..."
-minikube addons enable registry
-echo ""
-clear
 echo "uzgaidīt..."
 minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
 clear
@@ -66,10 +62,6 @@ echo "====================================================="
 echo "...uzgaidīt"
 sleep 2
 clear
-sleep 3
-echo "startējam yaml manifestus..."
-echo "----------------------------------------"
-echo ""
 cd ~/ltv
 composer create-project laravel/laravel example-app
 cd ~/ltv/example-app
@@ -83,6 +75,10 @@ docker build -t jusis707/lav:11 .
 docker push jusis707/lav:11
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
+echo "startējam servisu un aplikāciju manifestus..."
+echo "----------------------------------------"
+echo ""
+sleep 2
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -q
@@ -91,6 +87,8 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 kubectl apply -k ~/ltv/example-app/deployments/
+echo ""
+echo "---------------------------------------"
 cd ~/ltv/example-app
 clear
 minikube ip >ip-kube &
@@ -119,6 +117,8 @@ sleep 2
 clear
 minikube service stickersng-api --url
 cd ~/ltv/example-app/deployments
+echo "startējam hps un ingress manifestus..."
+echo "----------------------------------------"
 kubectl apply -f in.yaml
 kubectl apply -f hpa.yaml
 clear

@@ -91,15 +91,17 @@ cd ~/ltv/example-app/deployments
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
+kubectl apply -f envs.yaml
+kubectl apply -f api-deployment.yaml
+kubectl apply -f kustomization.yaml
 rm -rf ~/ltv/example-app/Dockerfile
 cd ~/ltv/example-app
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 docker build -t jusis707/lav:11 .
 docker push jusis707/lav:11
-kubectl apply -k ./deployments
-kubectl apply -f ./deployments/hpa.yaml
 clear
 minikube ip >ip-kube &
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
@@ -124,8 +126,8 @@ sleep 2
 clear
 minikube service stickersng-api --url
 cd ~/ltv/example-app/deployments
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 kubectl apply -f in.yaml
+kubectl apply -f hpa.yaml
 clear
 ##kubectl wait pod --all --for=condition=Ready --timeout=15m
 ##sleep 1

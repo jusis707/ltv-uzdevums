@@ -103,9 +103,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
-kubectl apply -f envs.yaml
-kubectl apply -f api-deployment.yaml
-kubectl apply -f mysql-deployment.yaml
+kubectl apply -k ~/ltv/example-app/deployments/
 cd ~/ltv/example-app
 clear
 minikube ip >ip-kube &

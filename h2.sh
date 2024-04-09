@@ -83,6 +83,7 @@ echo "----------------------------------------"
 echo ""
 cd ~/ltv
 eval $(minikube -p minikube docker-env)
+composer update
 composer create-project laravel/laravel example-app
 cd example-app
 mkdir deployments

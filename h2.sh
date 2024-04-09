@@ -144,8 +144,11 @@ minikube service stickersng-api --url
 cd ~/ltv/example-app/deployments
 echo "startējam hps un ingress manifestus..."
 echo "----------------------------------------"
-kubectl apply -f in.yaml
-kubectl apply -f hpa.yaml
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -O ~/ltv/example-app/deployments/hpa.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -O ~/ltv/example-app/deployments/in.yaml -q
+kubectl apply -f ~/ltv/example-app/deployments/in.yaml
+kubectl apply -f ~/ltv/example-app/deployments/hpa.yaml
+sleep 2
 clear
 ##kubectl wait pod --all --for=condition=Ready --timeout=15m
 ##sleep 1

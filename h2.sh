@@ -89,6 +89,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/exampl
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -O ~/ltv/example-app/deployments/kustomization.yaml -q
 kubectl apply -k ~/ltv/example-app/deployments/
 echo ""
+sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!  # Capture the process ID of the previous command
 spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters
@@ -124,6 +125,7 @@ echo  "Gaidam uz konteineru gatavību
 uzstādīts timeout = līdz 10 minūtēm"  # (optional) move to a new line
 echo "----------------------------------------"
 echo ""
+sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!  # Capture the process ID of the previous command
 spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters

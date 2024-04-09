@@ -96,8 +96,8 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 rm -rf ~/ltv/example-app/Dockerfile
 cd ~/ltv/example-app
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
-docker build -t jusis707/lav:1 .
-docker push jusis707/lav:1
+docker build -t jusis707/lav:11 .
+docker push jusis707/lav:11
 kubectl apply -k ./deployments
 kubectl apply -f ./deployments/hpa.yaml
 clear

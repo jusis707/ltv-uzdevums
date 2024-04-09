@@ -7,7 +7,7 @@ metadata:
   resourceVersion: "5583"
   uid: a029c976-0c84-4944-9d1b-f36d6cb63251
 spec:
-  maxReplicas: 4
+  maxReplicas: 8
   metrics:
   - resource:
       name: cpu

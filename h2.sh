@@ -93,7 +93,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
-cd ~ltv/example-app
+cd ~/ltv/example-app
 rm -rf Dockerfile
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -q
 docker build -t jusis707/lav:1 .

@@ -75,8 +75,8 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app
 composer update
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 eval $(minikube -p minikube docker-env)
-docker build -t jusis707/lav:11 .
-docker push jusis707/lav:11
+docker build -t jusis707/lav:9 .
+docker push jusis707/lav:9
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
 echo "startējam servisu un aplikāciju manifestus..."

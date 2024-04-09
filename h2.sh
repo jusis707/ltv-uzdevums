@@ -88,6 +88,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/example-app/deployments/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -O ~/ltv/example-app/deployments/kustomization.yaml -q
 kubectl apply -k ~/ltv/example-app/deployments/
+echo ""
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!  # Capture the process ID of the previous command
 spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters
@@ -99,6 +100,7 @@ while kill -0 $pid 2>/dev/null; do  # Check if the process is running
     done
 done
 echo
+echo -e "\n"
 echo "startējam db manifestus..."
 echo "----------------------------------------"
 echo ""

@@ -52,6 +52,10 @@ minikube addons enable ingress
 echo ""
 clear
 echo "uzgaidīt..."
+minikube addons enable registry
+echo ""
+clear
+echo "uzgaidīt..."
 minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
 clear
 echo "====================================================="
@@ -130,7 +134,6 @@ echo "----------------------------------------"
 echo ""
 sleep 2
 clear
-minikube service laravel
 echo "augstāk redzamo piefiksēt"
 sleep 3
 echo ""

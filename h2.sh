@@ -83,11 +83,11 @@ echo "----------------------------------------"
 echo ""
 cd ~/ltv
 composer create-project laravel/laravel example-app
-composer update
 cd ~/ltv/example-app
 rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
+composer update
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 eval $(minikube -p minikube docker-env)
 docker build -t jusis707/lav:11 .

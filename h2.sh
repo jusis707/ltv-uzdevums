@@ -2,8 +2,9 @@ h#/bin/bash
 read -p "
 ===========================================================================================
                                        UZMANĪBU
-                                     bija jāveic:
-           sudo groupadd docker && sudo usermod -a -G docker $USER && newgrp docker
+                          Uzstādīšana notiks interaktīvi...
+                       Lūgums sekot norādījumiem uz ekrāna
+ Iespējamie izvēles varianti ir apstiprinoši (tikai), jo zūd jēga, ar cita veida darbībām
 ===========================================================================================
                                   y lai turpinātu
                                 CTRL + C lai izietu

@@ -91,6 +91,22 @@ spec:
           requests:
             cpu: 200m
             memory: 256Mi
+          env:    # get environment variables from secrets
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: stng-secrets
+                  key: dbName
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: stng-secrets
+                  key: dbUserNameKey
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: stng-secrets
+                  key: dbPasswordKey
         name: stickersng-api
         envFrom:
         - secretRef:

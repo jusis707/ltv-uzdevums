@@ -1,5 +1,5 @@
 - Pārbaudīt mysql datubāzes pieejamību, katru komandrindu startējot atsevišķi (nospiest ENTER pēc pieprasījuma). \n
-kubectl run -it --rm --image=mysql:8.0 --restart=Never mysql-client -- mysql -h laravel -pASdf456+ \n
+kubectl run -it --rm --image=mysql:8.0 --restart=Never mysql-client -- mysql -h stickersng-mysql -u stickersng -pstickersng \n
 SHOW DATABASES; \n
 QUIT; \n
 - pārliecināties par HPA darbību (3 termināli atsevišķi): \n

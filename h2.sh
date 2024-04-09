@@ -112,7 +112,7 @@ cd ~/ltv/
 clear
 minikube ip > ~/ltv/ip-kube &
 echo "----------------------------------------"
-echo "pievienojam minikube ip adresi laravelltv.lv
+echo "pievienojam minikube ip adresi laravel.ltv.lv
 echo "----------------------------------------"
 pēc pieprasījuma, būs jāievada parole (sudo, ar noilgumu):"
 echo "----------------------------------------"

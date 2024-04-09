@@ -99,7 +99,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/examp
 docker build -t jusis707/lav:1 .
 docker push jusis707/lav:1
 kubectl apply -k ./deployments
-minikube service stickersng-api --url
+kubectl apply -f ./deployments/hpa.yaml
 clear
 minikube ip >ip-kube &
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
@@ -120,6 +120,9 @@ while kill -0 $pid 2>/dev/null; do  # Check if the process is running
 done
 echo
 echo -e "\n"
+sleep 2
+clear
+minikube service stickersng-api --url
 cd ~/ltv/example-app/deployments
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 kubectl apply -f in.yaml

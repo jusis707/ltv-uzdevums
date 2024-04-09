@@ -102,6 +102,7 @@ while kill -0 $pid 2>/dev/null; do  # Check if the process is running
 done
 echo
 echo -e "\n"
+echo ""
 echo "startējam db manifestus..."
 echo "----------------------------------------"
 echo ""
@@ -122,7 +123,7 @@ sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2
 echo "----------------------------------------"
 echo  "Gaidam uz konteineru gatavību
-uzstādīts timeout = līdz 10 minūtēm"  # (optional) move to a new line
+uzstādīts timeout = līdz 10 minūtēm"
 echo "----------------------------------------"
 echo ""
 sleep 2
@@ -138,9 +139,9 @@ while kill -0 $pid 2>/dev/null; do  # Check if the process is running
 done
 echo
 echo -e "\n"
+echo ""
 sleep 2
 clear
-minikube service stickersng-api --url
 cd ~/ltv/example-app/deployments
 echo "startējam hps un ingress manifestus..."
 echo "----------------------------------------"

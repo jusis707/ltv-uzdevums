@@ -185,6 +185,8 @@ clear
 wget https://github.com/jusis707/ltv/raw/main/inst.txt -q
 clear
 echo -e $(cat ~/ltv/inst.txt)
+echo "dzēšam
+kubectl delete pod mysql-client"
 fi
 fi
 fi

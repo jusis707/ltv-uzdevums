@@ -85,18 +85,18 @@ cd ~/ltv
 eval $(minikube -p minikube docker-env)
 composer update
 composer create-project laravel/laravel example-app
-cd example-app
-mkdir deployments
-cd deployments
+cd ~/ltv/example-app
+mkdir ~/ltv/example-app/deployments
+cd ~/ltv/example-app/deployments
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
+rm -rf ~/ltv/example-app/Dockerfile
 cd ~/ltv/example-app
-rm -rf Dockerfile
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 docker build -t jusis707/lav:1 .
 docker push jusis707/lav:1
 kubectl apply -k ./deployments

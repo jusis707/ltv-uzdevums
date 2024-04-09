@@ -71,7 +71,9 @@ composer create-project laravel/laravel example-app
 cd ~/ltv/example-app
 rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env
+rm -rf  ~/ltv/example-app/resources/views/welcome.blade.php
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -O ~/ltv/example-app/resources/views/welcome.blade.php-q
 composer update
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 eval $(minikube -p minikube docker-env)
@@ -89,7 +91,6 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 kubectl apply -k ~/ltv/example-app/deployments/
 echo ""
 echo "---------------------------------------"
@@ -161,8 +162,8 @@ curl -sS -X POST 'https://webhook.site/e7aa41df-d4ef-4d54-ae30-d6d74eca380f' -H 
 echo ""
 echo "augstāk redzamo piefiksēt, un pārliecināties par query datu pareizību atverot saiti"
 echo ""
-kubectl get pods -o name --no-headers=true | sed 's/pod\///g'> ./run.pod
-kubectl cp welcome.blade.php `cat run.pod`:/var/www/html/vdc/resources/views/welcome.blade.php
+#kubectl get pods -o name --no-headers=true | sed 's/pod\///g'> ./run.pod
+#kubectl cp welcome.blade.php `cat run.pod`:/var/www/html/vdc/resources/views/welcome.blade.php
 echo ""
 read -p "lai turpinātu un pārietu uz MYSQL pārbaudi nospiest y
 ----------------------------------------

@@ -82,8 +82,8 @@ echo "startējam yaml manifestus..."
 echo "----------------------------------------"
 echo ""
 cd ~/ltv
-composer update
 composer create-project laravel/laravel example-app
+composer update
 cd ~/ltv/example-app
 rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env

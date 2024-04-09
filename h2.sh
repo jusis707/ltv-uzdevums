@@ -1,4 +1,4 @@
-#/bin/bash
+h#/bin/bash
 read -p "
 ===========================================================================================
                                        UZMANĪBU
@@ -94,6 +94,9 @@ kubectl apply -k ~/ltv/example-app/deployments/
 cd ~/ltv/example-app
 clear
 minikube ip >ip-kube &
+echo "----------------------------------------"
+echo "būs jāievada parole:"
+echo "----------------------------------------"
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2
 echo "----------------------------------------"

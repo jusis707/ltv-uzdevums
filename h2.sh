@@ -102,10 +102,11 @@ echo "----------------------------------------"
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2
 echo "----------------------------------------"
-echo  "Gaidam uz konteineru gatavību"  # (optional) move to a new line
+echo  "Gaidam uz konteineru gatavību
+uzstādīts timeout = līdz 10 minūtēm"  # (optional) move to a new line
 echo "----------------------------------------"
 echo ""
-kubectl wait pod --all --for=condition=Ready --timeout=5m 2>/dev/null &
+kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!  # Capture the process ID of the previous command
 spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters
 echo -n "[... gaidīt] ${spin[0]}"  # Print the initial spinner character

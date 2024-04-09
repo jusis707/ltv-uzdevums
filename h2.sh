@@ -91,7 +91,6 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -q
 cd ~ltv/example-app

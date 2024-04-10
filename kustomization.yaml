@@ -1,4 +1,4 @@
 resources:
-- 3.yaml
-- 2.yaml
-- 1.yaml
+- envs.yaml
+- mysql-deployment.yaml
+- api-deployment.yaml

@@ -28,8 +28,6 @@ RUN composer install --no-scripts --no-autoloader
 COPY . .
 
 # Set permissions
-RUN mkdir /var/www/vdc;
-RUN cp -R /var/www/html/ /var/www/vdc/;
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 

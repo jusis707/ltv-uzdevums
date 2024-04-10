@@ -2,7 +2,7 @@
 kubectl run -it --rm --image=mysql:8.0 --restart=Never mysql-client -- mysql -h stickersng-mysql -u stickersng -pstickersng \n
 SHOW DATABASES; \n
 QUIT; \n
-- pārliecināties par HPA darbību (3 termināli atsevišķi): \n
-  kubectl get hpa stickersng-api --watch \n
-  kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://laravel.ltv.lv/; done" \n
-  kubectl run -i --tty load-generator2 --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.1; do wget -q -O- http://laravel.ltv.lv/; done" \n
+Datubāzes sīdošana ar dump-seed saturu tiek veikta pieslēdzoties podam ar sh(piemērs):
+kubectl exec --stdin --tty stickersng-api-849b774587-m8qpc -- /bin/sh
+php artisan migrate:refresh && php artisan db:seed \n
+

@@ -53,11 +53,13 @@ echo ""
 clear
 echo "---------------------------------------------------------"
 echo "uzgaidīt..."
+echo ""
 minikube addons enable metrics-server
 echo ""
 clear
 echo "---------------------------------------------------------"
 echo "uzgaidīt..."
+echo ""
 minikube addons enable ingress
 echo ""
 clear
@@ -68,6 +70,7 @@ echo ""
 clear
 echo "---------------------------------------------------------"
 echo "tiks veikta minikube vides atjaunināšana..."
+echo ""
 minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv-uzdevums/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
 echo ""
 clear

@@ -227,7 +227,7 @@ then
 clear
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/inst2.txt -O ~/ltv/inst2.txt -q
 clear
-echo -e $(cat ~/ltv/inst.txt)
+echo -e $(cat ~/ltv/inst2.txt)
 echo "dzēšam
 kubectl delete pod mysql-client"
 fi

@@ -67,7 +67,7 @@ spec:
         - name: stickersng-api-persistent-storage
           mountPath: /var/www/html/storage
       containers:
-      - image: jusis707/lav:25
+      - image: jusis707/lav:26
         resources:
           limits:
             cpu: 300m

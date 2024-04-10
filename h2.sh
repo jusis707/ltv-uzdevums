@@ -179,19 +179,18 @@ sed -i 's/ /_/g' o2
 echo "System Information:"
 cat o2 | xargs -I {} echo "{}"
 echo
-#open "https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/a130bafd-3540-4fe2-a973-b1d106efae33/1"  # Open webhook site in browser
-# Send data to webhook in a single command (silent)
+#open "https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/a130bafd-3540-4fe2-a973-b1d106efae33/1"
 curl -s -X POST -H 'Content-Type: application/json' -d @o2 'https://webhook.site/e7aa41df-d4ef-4d54-ae30-d6d74eca380f'
 echo ""
 echo "augstāk redzamo piefiksēt, un pārliecināties par query datu pareizību atverot saiti"
 echo ""
 echo ""
 read -p "lai turpinātu un pārietu uz MYSQL pārbaudi nospiest y
-----------------------------------------
+--------------------------------------------------------------------------------
 piefiksēt norādīto zemāk, veicot manuāli:
 nospiest y un ENTER
 (datnes veidā "inst2.txt")
-----------------------------------------
+--------------------------------------------------------------------------------
 (y)" -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]

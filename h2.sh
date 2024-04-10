@@ -90,6 +90,7 @@ mkdir ~/ltv/example-app/deployments
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/example-app/deployments/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -O ~/ltv/example-app/deployments/kustomization.yaml -q
 composer update
 eval $(minikube -p minikube docker-env)
 docker build -t jusis707/lav:24 .
@@ -102,9 +103,7 @@ echo "startējam servisu un aplikāciju manifestus..."
 echo "----------------------------------------"
 echo ""
 sleep 2
-kubectl apply -f ~/ltv/example-app/deployments/envs.yaml
-kubectl apply -f ~/ltv/example-app/deployments/mysql-deployment.yaml
-kubectl apply -f ~/ltv/example-app/deployments/api-deployment.yaml
+kubectl apply -k ~/ltv/example-app/deployments/
 sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!

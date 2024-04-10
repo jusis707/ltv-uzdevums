@@ -102,8 +102,10 @@ echo ""
 sleep 2
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/example-app/deployments/envs.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
 kubectl apply -f ~/ltv/example-app/deployments/envs.yaml
 kubectl apply -f ~/ltv/example-app/deployments/mysql-deployment.yaml
+kubectl apply -f ~/ltv/example-app/deployments/api-deployment.yaml
 sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!
@@ -124,8 +126,6 @@ echo "----------------------------------------------------------------------"
 echo  "Gaidam uz konteineru gatavību
 uzstādīts timeout = līdz 10 minūtēm"
 echo ""
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
-kubectl apply -f ~/ltv/example-app/deployments/api-deployment.yaml
 sleep 2
 echo ""
 echo ""

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  # Unique name for the Ingress resource (consider app-specific name)
+  name: stickersng-api
+  annotations:
+    # Rewrite all requests to the root path (/)
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: laravel.ltv.lv  # Hostname for which this Ingress applies
+    http:
+      paths:
+      - path: /        # Matches requests to any path under "/"
+        pathType: Prefix  # Match requests starting with "/"
+        backend:
+          service:
+            # Service name to route traffic to
+            name: stickersng-api
+            port:
+              # Port on which the service listens
+              number: 8000

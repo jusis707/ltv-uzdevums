@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stng-secrets
+type: Opaque  # Consider using Opaque for non-sensitive data
+data:
+  # Store sensitive data like passwords and database credentials in base64 encoding
+  DB_PASSWORD: c3RpY2tlcnNuZw==  # Replace with actual base64 encoded password value
+  DB_USERNAME: c3RpY2tlcnNuZw==  # Replace with actual base64 encoded username value
+  DB_HOST: "c3RpY2tlcnNuZy1teXNxbA=="
+  DB_DATABASE: "c3RpY2tlcnNuZy1kYg=="
+stringData:
+  # Store non-sensitive data like application name and environment
+  APP_NAME: "App Name"
+  APP_ENV: "local"
+  APP_DEBUG: "true"  # Consider not storing debug flags in Secrets
+  APP_URL: "http://127.0.0.1:8000"
+  DB_CONNECTION: "mysql"
+  DB_PORT: "3306"
+# Consider using ConfigMaps for non-sensitive data like:
+# APP_NAME: "App Name"
+# APP_ENV: "local"
+# APP_URL: "http://127.0.0.1:8000"

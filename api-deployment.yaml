@@ -1,0 +1,106 @@
+# Service definition for StickersNG API - LoadBalancer for external access
+apiVersion: v1
+kind: Service
+metadata:
+  # Unique name for the service
+  name: stickersng-api
+  labels:
+    # Labels for identifying pods belonging to this service
+    app: stickersng-api
+    tier: backend-api
+spec:
+  # Expose port 8000 of the API container to the external world
+  ports:
+  - port: 8000
+    # Optional name for the port (descriptive)
+    name: stickersng-api
+  # Service type for external access
+  type: LoadBalancer
+  # Selector to select pods with labels (consider using tier for clarity)
+  selector:
+    app: stickersng-api
+---
+# PersistentVolumeClaim for StickersNG API storage
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  # Unique name for the PVC
+  name: stickersng-api-pv-claim
+  labels:
+    # Labels for identifying PVCs (consider using tier for clarity)
+    app: stickersng-api
+spec:
+  # Access mode for the storage (read-write for updates)
+  accessModes:
+  - ReadWriteOnce
+  # Storage request for the PVC (20 GiB)
+  resources:
+    requests:
+      storage: 20Gi
+---
+# Deployment for StickersNG API with persistent storage
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique name for the deployment
+  name: stickersng-api
+  labels:
+    # Labels for identifying pods belonging to this deployment
+    app: stickersng-api
+    tier: backend-api
+spec:
+  # Number of replicas for the API (1 in this case)
+  replicas: 1
+  # Selector to identify pods for scaling and operations
+  selector:
+    matchLabels:
+      app: stickersng-api
+      tier: backend-api
+  # Recreate strategy for updates (consider using RollingUpdate for smoother transitions)
+  strategy:
+    type: Recreate
+  # Pod template definition
+  template:
+    metadata:
+      # Labels for identifying pods managed by the deployment
+      labels:
+        app: stickersng-api
+        tier: backend-api
+    spec:
+      # Init container for creating storage directories
+      initContainers:
+      - name: setup-storage
+        image: busybox
+#        command: ["sh", "-c", "mkdir -p /var/www/html/storage/{framework/views,framework/cache,framework/sessions} && chown -R www-data:www-data /var/www/html/storage/framework/sessions/"]
+        command: ["sh", "-c", "mkdir -p /var/www/html/storage/framework/views/ && mkdir -p /var/www/html/storage/framework/cache/ && mkdir -p /var/www/html/storage/framework/sessions/ && chown -R www-data:www-data /var/www/html/storage/framework/sessions/"]
+        volumeMounts:
+        - name: stickersng-api-persistent-storage
+          mountPath: /var/www/html/storage
+      # Main container for running the StickersNG API application
+      containers:
+      - image: jusis707/lav:24
+        resources:
+          # Resource limits and requests for the container
+          limits:
+            cpu: 300m
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        name: stickersng-api
+        # Environment variables from a secret (consider using ConfigMap for non-sensitive data)
+        envFrom:
+        - secretRef:
+            name: stng-secrets
+        ports:
+        - containerPort: 8000
+          name: stickersng-api
+        # Mount persistent storage volume
+        volumeMounts:
+        - name: stickersng-api-persistent-storage
+          mountPath: /var/www/html/storage
+      # Volumes definition
+      volumes:
+      - name: stickersng-api-persistent-storage
+        # Claim reference for persistent storage
+        persistentVolumeClaim:
+          claimName: stickersng-api-pv-claim

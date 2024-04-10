@@ -2,6 +2,14 @@
 read -p "
 ===========================================================================================
                                        UZMANĪBU
+                                     bija jāveic:
+                                sudo groupadd docker
+                     sudo usermod -aG docker $USER && newgrp docker
+===========================================================================================
+                                  y lai turpinātu
+                                CTRL + C lai izietu
+                                  risinājums Nr.2
+                                  
                           Uzstādīšana notiks interaktīvi...
                        Lūgums sekot norādījumiem uz ekrāna
  Iespējamie izvēles varianti ir apstiprinoši (tikai), jo zūd jēga, ar cita veida darbībām

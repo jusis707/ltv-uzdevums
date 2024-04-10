@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
-    vim \
     zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_mysql zip
@@ -35,5 +34,5 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 RUN composer dump-autoload
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+EXPOSE 8000
+CMD php artisan serve --host=0.0.0.0 --port=8000

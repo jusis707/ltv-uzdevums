@@ -100,8 +100,8 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -O ~/ltv/example-app/deployments/kustomization.yaml -q
 composer update
 eval $(minikube -p minikube docker-env)
-docker build -t jusis707/lav:24 .
-docker push jusis707/lav:24
+docker build -t jusis707/lav:28 .
+docker push jusis707/lav:28
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
 clear

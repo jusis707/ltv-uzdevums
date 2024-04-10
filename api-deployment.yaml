@@ -1,16 +1,16 @@
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: stickersng-api
-#  labels:
-#    app: stickersng-api
-#spec:
-#  ports:
-#  - port: 8000
-#  selector:
-#    app: stickersng-api
-#    tier: backend-api
-#  type: LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: stickersng-api
+  labels:
+    app: stickersng-api
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: stickersng-api
+    tier: backend-api
+  type: LoadBalancer
 #---
 #apiVersion: v1
 #kind: Service
@@ -25,23 +25,6 @@
 #    app: stickersng-api
 #    tier: backend-api
 #  type: NodePort
-apiVersion: v1
-kind: Service
-metadata:
-  name: stickersng-api
-  labels:
-    app: stickersng-api
-spec:
-  type: NodePort
-  ports:
-  - nodePort: 32223
-    port: 8000
-    name: stickersng-api
-  - port: 3306
-    name: stickersng-mysql
-  selector:
-    app: stickersng-api
-    tier: backend-api
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

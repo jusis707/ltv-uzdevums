@@ -78,7 +78,7 @@ spec:
           mountPath: /var/www/html/storage
       # Main container for running the StickersNG API application
       containers:
-      - image: jusis707/lav:24
+      - image: jusis707/lav:28
         resources:
           # Resource limits and requests for the container
           limits:

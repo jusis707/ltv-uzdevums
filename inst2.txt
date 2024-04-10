@@ -1,5 +1,5 @@
 - Pārbaudīt mysql datubāzes pieejamību, katru komandrindu startējot atsevišķi (nospiest ENTER pēc pieprasījuma). Ir jāgaida lai servisi startējas...\n
-kubectl run -it --rm --image=mysql:latest mysql-test -- mysql -h stickersng-mysql -u stickersng -pstickersng \n
+kubectl run -it --rm --image=mysql:8.0 mysql-test -- mysql -h stickersng-mysql -u stickersng -pstickersng \n
 SHOW DATABASES; \n
 QUIT; \n
 Datubāzes sīdošana ar dump-seed saturu tiek veikta pieslēdzoties podam ar sh(piemērs): \n

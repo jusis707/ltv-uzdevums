@@ -51,19 +51,25 @@ minikube config set memory 4096
 minikube start --insecure-registry "10.0.0.0/24" --driver=docker
 echo ""
 clear
+echo "---------------------------------------------------------"
+echo "uzgaidīt..."
 minikube addons enable metrics-server
 echo ""
 clear
+echo "---------------------------------------------------------"
 echo "uzgaidīt..."
 minikube addons enable ingress
 echo ""
 clear
+echo "---------------------------------------------------------"
 echo "uzgaidīt..."
 minikube addons enable registry
 echo ""
 clear
-echo "uzgaidīt..."
-minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
+echo "---------------------------------------------------------"
+echo "tiks veikta minikube vides atjaunināšana..."
+minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv-uzdevums/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
+echo ""
 clear
 echo "====================================================="
 echo  "UZMANĪBU"  # (optional) move to a new line

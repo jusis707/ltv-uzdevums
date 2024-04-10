@@ -94,6 +94,8 @@ docker build -t jusis707/lav:20 .
 docker push jusis707/lav:20
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
+clear
+echo ""
 echo "startējam servisu un aplikāciju manifestus..."
 echo "----------------------------------------"
 echo ""
@@ -120,6 +122,7 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/exampl
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/kustomization.yaml -O ~/ltv/example-app/deployments/kustomization.yaml -q
 kubectl apply -k ~/ltv/example-app/deployments/
 echo ""
+echo ""
 sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
 pid=$!  # Capture the process ID of the previous command
@@ -134,24 +137,24 @@ done
 echo
 echo -e "\n"
 echo ""
-echo "startējam db manifestus..."
-echo "----------------------------------------"
+clear
 echo ""
-echo "---------------------------------------"
+echo "----------------------------------------------------------------------"
+echo "startējam db manifestus..."
+echo ""
 cd ~/ltv/
 clear
 minikube ip > ~/ltv/ip-kube &
-echo "----------------------------------------"
+echo "----------------------------------------------------------------------"
 echo "pievienojam minikube ip adresi laravel.ltv.lv
-echo "----------------------------------------"
+echo ""
 pēc pieprasījuma, būs jāievada parole (sudo, ar noilgumu):"
-echo "----------------------------------------"
+echo ""
 sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2
-echo "----------------------------------------"
+echo "----------------------------------------------------------------------"
 echo  "Gaidam uz konteineru gatavību
 uzstādīts timeout = līdz 10 minūtēm"
-echo "----------------------------------------"
 echo ""
 sleep 2
 kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
@@ -170,8 +173,10 @@ echo ""
 sleep 2
 clear
 cd ~/ltv/example-app/deployments
+clear
+echo "----------------------------------------------------------------------"
 echo "startējam hps un ingress manifestus..."
-echo "----------------------------------------"
+echo ""
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/hpa.yaml -O ~/ltv/example-app/deployments/hpa.yaml -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -O ~/ltv/example-app/deployments/in.yaml -q
 kubectl apply -f ~/ltv/example-app/deployments/in.yaml

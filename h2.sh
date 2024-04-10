@@ -86,6 +86,10 @@ rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
+mkdir ~/ltv/example-app/deployments
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/example-app/deployments/envs.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
 composer update
 eval $(minikube -p minikube docker-env)
 docker build -t jusis707/lav:24 .
@@ -98,9 +102,6 @@ echo "startējam servisu un aplikāciju manifestus..."
 echo "----------------------------------------"
 echo ""
 sleep 2
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/envs.yaml -O ~/ltv/example-app/deployments/envs.yaml -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
 kubectl apply -f ~/ltv/example-app/deployments/envs.yaml
 kubectl apply -f ~/ltv/example-app/deployments/mysql-deployment.yaml
 kubectl apply -f ~/ltv/example-app/deployments/api-deployment.yaml

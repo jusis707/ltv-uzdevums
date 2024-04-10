@@ -84,9 +84,7 @@ composer create-project laravel/laravel example-app
 cd ~/ltv/example-app
 rm -rf ~/ltv/example-app/Dockerfile
 rm -rf cd ~/ltv/example-app/.env
-rm -rf  ~/ltv/example-app/resources/views/welcome.blade.php
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/.env -O ~/ltv/example-app/.env -q
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -O ~/ltv/example-app/resources/views/welcome.blade.php-q
 composer update
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 eval $(minikube -p minikube docker-env)

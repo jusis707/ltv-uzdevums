@@ -71,7 +71,7 @@ clear
 echo "---------------------------------------------------------"
 echo "tiks veikta minikube vides atjaunināšana..."
 echo ""
-minikube ssh 'sudo apt-get install wget -y;wget https://github.com/jusis707/ltv-uzdevums/raw/main/mini.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh'
+minikube ssh 'curl -sSLv https://raw.githubusercontent.com/jusis707/ltv-uzdevums/main/mini.sh -o install.sh; chmod +x ./install.sh; bash ./install.sh'
 echo ""
 clear
 echo "====================================================="

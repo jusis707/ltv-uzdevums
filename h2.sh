@@ -159,21 +159,29 @@ read -p "
                   lai turpinātu, nospiest y
                tiks sagatavots webhook query
 docker versija uz host servera un minikube vidē ir = un atjaunināta
+webhook saite:
+https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/a130bafd-3540-4fe2-a973-b1d106efae33/1
 ----------------------------------------------------------------------
 (y)" -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
-echo "Ubuntu" >o1
-cat /etc/lsb-release | sed -n 4p | awk '{print $2}' >>o1
-minikube ssh 'docker --version' | awk '{print $1, $2, $3}' | sed 's/,//' >>o1
-cat o1 | awk '{print}' ORS='/' >o2
-cat o2 | sed 's/ /_/g'>o3
-echo "Pārlūkprogramā atvērt:
-https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/a130bafd-3540-4fe2-a973-b1d106efae33/1
-"
-curl -sS -X POST 'https://webhook.site/e7aa41df-d4ef-4d54-ae30-d6d74eca380f' -H 'content-type: application/json' -d $(cat o3) -o /dev/null
+os_name="Ubuntu"
+os_version=$(cat /etc/lsb-release | sed -n 4p | awk '{print $2}')
+docker_version=$(minikube ssh docker version | awk '{print $1, $2, $3}' | tr ',' ' ')
+# Combine information into a single file (o1)
+printf "%s\n%s\n%s" "$os_name" "$os_version" "$docker_version" >o1
+# Format and clean output (o2, o3)
+tr '/' '_' < o1 > o2
+sed -i 's/ /_/g' o2 
+# Display information and send to webhook
+echo "System Information:"
+cat o2 | xargs -I {} echo "{}"
+echo
+#open "https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/a130bafd-3540-4fe2-a973-b1d106efae33/1"  # Open webhook site in browser
+# Send data to webhook in a single command (silent)
+curl -s -X POST -H 'Content-Type: application/json' -d @o2 'https://webhook.site/e7aa41df-d4ef-4d54-ae30-d6d74eca380f'
 echo ""
 echo "augstāk redzamo piefiksēt, un pārliecināties par query datu pareizību atverot saiti"
 echo ""

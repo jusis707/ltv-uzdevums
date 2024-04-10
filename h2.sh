@@ -225,7 +225,7 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/inst.txt -O ~/ltv/inst.txt -q
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/inst2.txt -O ~/ltv/inst2.txt -q
 clear
 echo -e $(cat ~/ltv/inst.txt)
 echo "dzēšam

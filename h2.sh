@@ -145,7 +145,7 @@ echo ""
 cd ~/ltv/example-app/deployments
 clear
 echo "----------------------------------------------------------------------"
-echo "startējam hps un ingress manifestus..."
+echo "startējam ingress manifestu..."
 echo ""
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -O ~/ltv/example-app/deployments/in.yaml -q
 kubectl apply -f ~/ltv/example-app/deployments/in.yaml
@@ -175,7 +175,6 @@ printf "%s\n%s\n%s" "$os_name" "$os_version" "$docker_version" >o1
 # Format and clean output (o2, o3)
 tr '/' '_' < o1 > o2
 sed -i 's/ /_/g' o2 
-# Display information and send to webhook
 echo "System Information:"
 cat o2 | xargs -I {} echo "{}"
 echo
@@ -201,7 +200,7 @@ clear
 echo -e $(cat ~/ltv/inst2.txt)
 echo "dzēšam
 kubectl delete pod mysql-client
-apmeklējam curl  http://laravel.ltv.lv"
+"
 fi
 fi
 fi

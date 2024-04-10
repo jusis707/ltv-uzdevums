@@ -126,27 +126,6 @@ uzstādīts timeout = līdz 10 minūtēm"
 echo ""
 sleep 2
 echo ""
-echo ""
-sleep 2
-kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
-pid=$!  # Capture the process ID of the previous command
-spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters
-echo -n "[... gaidīt] ${spin[0]}"  # Print the initial spinner character
-while kill -0 $pid 2>/dev/null; do  # Check if the process is running
-    for i in "${spin[@]}"; do  # Iterate through spinner characters
-        echo -ne "\b$i"  # Overwrite previous character with a new one
-        sleep 0.2        # Delay for animation effect
-    done
-done
-echo
-echo -e "\n"
-echo ""
-clear
-echo ""
-echo "----------------------------------------------------------------------"
-echo "startējam db manifestus..."
-echo ""
-cd ~/ltv/
 clear
 minikube ip > ~/ltv/ip-kube &
 echo "----------------------------------------------------------------------"
@@ -158,8 +137,8 @@ sudo -- sh -c "echo $(minikube ip) laravel.ltv.lv >> /etc/hosts"
 sleep 2
 clear
 echo ""
-sleep 2
 clear
+echo ""
 cd ~/ltv/example-app/deployments
 clear
 echo "----------------------------------------------------------------------"
@@ -169,23 +148,15 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/in.yaml -O ~/ltv/example-
 kubectl apply -f ~/ltv/example-app/deployments/in.yaml
 sleep 2
 clear
-##kubectl wait pod --all --for=condition=Ready --timeout=15m
-##sleep 1
-echo "----------------------------------------"
-echo  "Uzskatāmībai, ekrāns būs notīrīts"  # (optional) move to a new line
-echo "----------------------------------------"
+echo "----------------------------------------------------------------------"
 echo ""
-sleep 2
-clear
-echo "augstāk redzamo piefiksēt"
-sleep 3
 echo ""
 read -p "
-----------------------------------------
-      lai turpinātu, nospiest y
-    tiks sagatavots webhook query
+----------------------------------------------------------------------
+                  lai turpinātu, nospiest y
+               tiks sagatavots webhook query
 docker versija uz host servera un minikube vidē ir = un atjaunināta
-----------------------------------------
+----------------------------------------------------------------------
 (y)" -n 1 -r
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]

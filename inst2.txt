@@ -5,3 +5,5 @@ QUIT; \n
 Datubāzes sīdošana ar dump-seed saturu tiek veikta pieslēdzoties podam ar sh(piemērs): \n
 kubectl exec --stdin --tty stickersng-api-849b774587-m8qpc -- /bin/sh \n
 php artisan migrate:refresh && php artisan db:seed \n
+ \n
+Beigās var apmeklēt adresi: curl http://laravel.ltv.lv \n

@@ -76,12 +76,29 @@ wget https://github.com/jusis707/ltv-uzdevums/raw/main/welcome.blade.php -O ~/lt
 composer update
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/Dockerfile -O ~/ltv/example-app/Dockerfile -q
 eval $(minikube -p minikube docker-env)
-docker build -t jusis707/lav:12 .
-docker push jusis707/lav:12
+docker build -t jusis707/lav:20 .
+docker push jusis707/lav:20
 mkdir ~/ltv/example-app/deployments
 cd ~/ltv/example-app/deployments
 echo "startējam servisu un aplikāciju manifestus..."
 echo "----------------------------------------"
+echo ""
+sleep 2
+wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
+kubectl apply -f ~/ltv/example-app/deployments/mysql-deployment.yaml
+sleep 2
+kubectl wait pod --all --for=condition=Ready --timeout=10m 2>/dev/null &
+pid=$!  # Capture the process ID of the previous command
+spin=( "-" "\\" "|" "/" )  # Create an array for spinner characters
+echo -n "[... gaidīt] ${spin[0]}"  # Print the initial spinner character
+while kill -0 $pid 2>/dev/null; do  # Check if the process is running
+    for i in "${spin[@]}"; do  # Iterate through spinner characters
+        echo -ne "\b$i"  # Overwrite previous character with a new one
+        sleep 0.2        # Delay for animation effect
+    done
+done
+echo
+echo -e "\n"
 echo ""
 sleep 2
 wget https://github.com/jusis707/ltv-uzdevums/raw/main/api-deployment.yaml -O ~/ltv/example-app/deployments/api-deployment.yaml -q
@@ -105,10 +122,6 @@ echo -e "\n"
 echo ""
 echo "startējam db manifestus..."
 echo "----------------------------------------"
-echo ""
-sleep 2
-wget https://github.com/jusis707/ltv-uzdevums/raw/main/mysql-deployment.yaml -O ~/ltv/example-app/deployments/mysql-deployment.yaml -q
-kubectl apply -f ~/ltv/example-app/deployments/mysql-deployment.yaml
 echo ""
 echo "---------------------------------------"
 cd ~/ltv/

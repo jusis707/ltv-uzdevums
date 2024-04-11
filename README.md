@@ -23,4 +23,6 @@ docker build un kubectl apply -f būs startēts ar vienu un to pašu 'image' nos
 ## kubectl exec --stdin --tty stickersng-api-849b774587-m8qpc -- /bin/sh
 ##php artisan migrate:refresh && php artisan db:seed
 ## Beigās var apmeklēt adresi: curl http://laravel.ltv.lv
+## Webhook saite, kura jāatver bash skripta darbības laikā:
+https://webhook.site/#!/view/e7aa41df-d4ef-4d54-ae30-d6d74eca380f/5cd180a3-7394-4c43-9705-1e6c5bd1f91f/1
 

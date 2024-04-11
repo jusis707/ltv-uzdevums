@@ -9,7 +9,7 @@ read -p "
                                    y lai turpinātu
                                  CTRL + C lai izietu
                                    risinājums Nr.2
-                                  
+   ar datubāzes populāciju un programmatūras versijas atbalsti uz vismaz gadu ievēroti
                            Uzstādīšana notiks interaktīvi...
                         Lūgums sekot norādījumiem uz ekrāna
   Iespējamie izvēles varianti ir apstiprinoši (tikai), jo zūd jēga, ar cita veida darbībām

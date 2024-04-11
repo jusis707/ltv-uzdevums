@@ -2,8 +2,11 @@
 # Sistēmu Administrators
 ### Risinājums 'numur divi'.
 ### Detalizētāks skaidrojums .pdf dokumentā, nosūtīts uz e-pastu.
-##### Uzdevuma izpildē tiks izmantos personīgā docker.io piekļuve un publicēts docker image, kas savukārt tiks uzstādīts jau ar pull (atkārtoti 'vilkts' uz likālo reģistru - uzskatāmībai).
-Šajā risinājumā, tiks nodrošināts 'seed' ar saturu uz datubāzi.Darbība veicama, pieslēdzoties podam ar sh. Pod tikai ar laravel aplikāciju (nevis mysql), zem nosaukuma stickerng-api-xxxxxx-xxxxx (piemērs): 
+## Pirms bash skripta starēšanas, jāveic: 
+sudo groupadd docker
+sudo usermod -aG docker $USER && newgrp docker
+## Uzdevuma izpildē tiks izmantos personīgā docker.io piekļuve un publicēts docker image, kas savukārt tiks uzstādīts jau ar pull (atkārtoti 'vilkts' uz likālo reģistru - uzskatāmībai).
+## Šajā risinājumā, tiks nodrošināts 'seed' ar saturu uz datubāzi.Darbība veicama, pieslēdzoties podam ar sh. Pod tikai ar laravel aplikāciju (nevis mysql), zem nosaukuma stickerng-api-xxxxxx-xxxxx (piemērs): 
 
 kubectl exec --stdin --tty stickersng-api-849b774587-m8qpc -- /bin/sh
 php artisan migrate:refresh && php artisan db:seed

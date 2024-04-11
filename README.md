@@ -8,7 +8,7 @@ sudo groupadd docker
 sudo usermod -aG docker $USER && newgrp docker
 ## 
 ## Bash skripta startēšana:
-## wget https://github.com/jusis707/ltv-uzdevums/raw/main/h2.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh
+## wget https://github.com/jusis707/ltv-uzdevums/raw/main/install.sh -v -O install.sh; chmod +x ./install.sh; bash ./install.sh
 ##
 ## Uzdevuma izpildē tiks izmantos personīgā docker.io piekļuve un publicēts docker image, kas savukārt tiks uzstādīts jau ar pull (atkārtoti 'vilkts' uz likālo reģistru - uzskatāmībai).
 ## Šajā risinājumā, tiks nodrošināts 'seed' ar saturu uz datubāzi.Darbība veicama, pieslēdzoties podam ar sh. Pod tikai ar laravel aplikāciju (nevis mysql), zem nosaukuma stickerng-api-xxxxxx-xxxxx (piemērs): 
